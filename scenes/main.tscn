@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb1d115xadgl6"]
+
+[ext_resource type="PackedScene" uid="uid://bi50dudc1175u" path="res://scenes/floor.tscn" id="1_mu60h"]
+[ext_resource type="PackedScene" uid="uid://bfcaqfrhsnmqe" path="res://scenes/player1.tscn" id="2_uequ8"]
+[ext_resource type="PackedScene" uid="uid://cqxa4n5piseyl" path="res://scenes/player2.tscn" id="3_8y7ip"]
+[ext_resource type="PackedScene" uid="uid://c2mdope6yekvg" path="res://scenes/building.tscn" id="4_tp7if"]
+[ext_resource type="PackedScene" uid="uid://b3ty70g45hhw3" path="res://scenes/camera.tscn" id="5_lpkwr"]
+
+[node name="World" type="Node2D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_mu60h")]
+position = Vector2(608, 840)
+
+[node name="Player1" parent="." instance=ExtResource("2_uequ8")]
+position = Vector2(392, 480)
+
+[node name="Player2" parent="." instance=ExtResource("3_8y7ip")]
+position = Vector2(640, 504)
+
+[node name="Building" parent="." instance=ExtResource("4_tp7if")]
+position = Vector2(528, 744)
+
+[node name="Camera2D" parent="." instance=ExtResource("5_lpkwr")]
