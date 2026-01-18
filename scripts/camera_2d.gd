@@ -6,24 +6,25 @@ extends Camera2D
 var camera_speed = 0.1
 var zoom_speed = 0.1
 var zoom_offset = 0.2
-var viewport_rect
 
 
 func _ready() -> void:
 	global_position = Vector2(0, 0)
-	viewport_rect = get_viewport_rect()
+	
 
 func _process(_delta: float) -> void:
-	var camera_rect = Rect2(p1.global_position, p2.global_position)
+	var x = clamp(1.5 - 0.002 * abs(global_position.x - p1.global_position.x), 0.75, 1.5)
+	print(abs(global_position.x - p1.global_position.x))
+	var new_zoom = Vector2(x, x)
 	
-	offset = lerp(offset, calculate_center(camera_rect), camera_speed)
-	zoom = lerp(zoom, calculate_zoom(camera_rect, viewport_rect.size), zoom_speed)
+	global_position = lerp(global_position, calculate_center(p1, p2), camera_speed)
+	zoom = lerp(zoom, new_zoom, zoom_speed)
 
 
-func calculate_center(rect) -> Vector2:
+func calculate_center(p1, p2) -> Vector2:
 	return Vector2(
-		rect.position.x + rect.size.x / 2,
-		rect.position.y + rect.size.y / 2
+		(p1.global_position.x + p2.global_position.x) / 2,
+		(p1.global_position.y + p2.global_position.y) / 2
 		)
 
 func calculate_zoom(rect, viewport_size) -> Vector2:
