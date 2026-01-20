@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://lro7scjdhx84"]
+
+[ext_resource type="Texture2D" uid="uid://bt7yyjdujoqqa" path="res://sprites/ObstacleBlue.png" id="1_ix2r3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqakj"]
+size = Vector2(80, 48)
+
+[node name="Box" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tqakj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, 3.8147e-06)
+scale = Vector2(0.0386667, 0.0386667)
+texture = ExtResource("1_ix2r3")

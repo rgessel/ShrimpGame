@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cecxnhpdduofc"]
+
+[ext_resource type="Texture2D" uid="uid://cg0mn53cmwot2" path="res://sprites/ObstacleOrange.png" id="1_e1wth"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqakj"]
+size = Vector2(80, 48)
+
+[node name="Box" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tqakj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, 3.8147e-06)
+scale = Vector2(0.0386667, 0.0386667)
+texture = ExtResource("1_e1wth")

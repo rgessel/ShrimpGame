@@ -1,10 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb1d115xadgl6"]
+[gd_scene load_steps=15 format=3 uid="uid://cb1d115xadgl6"]
 
 [ext_resource type="PackedScene" uid="uid://bi50dudc1175u" path="res://scenes/floor.tscn" id="1_mu60h"]
 [ext_resource type="PackedScene" uid="uid://bfcaqfrhsnmqe" path="res://scenes/player1.tscn" id="2_uequ8"]
-[ext_resource type="PackedScene" uid="uid://cqxa4n5piseyl" path="res://scenes/player2.tscn" id="3_8y7ip"]
+[ext_resource type="PackedScene" uid="uid://bdj34cc0hxwxe" path="res://scenes/player2.tscn" id="3_8y7ip"]
 [ext_resource type="PackedScene" uid="uid://c2mdope6yekvg" path="res://scenes/building.tscn" id="4_tp7if"]
 [ext_resource type="PackedScene" uid="uid://b3ty70g45hhw3" path="res://scenes/camera.tscn" id="5_lpkwr"]
+[ext_resource type="Texture2D" uid="uid://dpqjwc6img2r1" path="res://sprites/city.png" id="7_arvkc"]
+[ext_resource type="PackedScene" uid="uid://lro7scjdhx84" path="res://scenes/blue_box.tscn" id="8_b8a0p"]
+[ext_resource type="Texture2D" uid="uid://c4we65eijfcms" path="res://sprites/skyline.png" id="8_n1wi3"]
+[ext_resource type="PackedScene" uid="uid://cecxnhpdduofc" path="res://scenes/orange_box.tscn" id="9_sklym"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irydr"]
+atlas = ExtResource("7_arvkc")
+region = Rect2(0, 0, 1037, 416)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxwtq"]
+atlas = ExtResource("7_arvkc")
+region = Rect2(1037, 0, 1037, 416)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a16yh"]
+atlas = ExtResource("7_arvkc")
+region = Rect2(2074, 0, 1037, 416)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jitl8"]
+atlas = ExtResource("7_arvkc")
+region = Rect2(3111, 0, 1037, 416)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xxyso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irydr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxwtq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a16yh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jitl8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="World" type="Node2D"]
 
@@ -14,10 +54,74 @@ position = Vector2(608, 840)
 [node name="Player1" parent="." instance=ExtResource("2_uequ8")]
 position = Vector2(392, 480)
 
-[node name="Player2" parent="." instance=ExtResource("3_8y7ip")]
-position = Vector2(640, 504)
-
 [node name="Building" parent="." instance=ExtResource("4_tp7if")]
-position = Vector2(528, 744)
+position = Vector2(581, 669)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_lpkwr")]
+
+[node name="Player2" parent="." instance=ExtResource("3_8y7ip")]
+position = Vector2(845, 549)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.1, 1.1)
+
+[node name="city burning" type="Node2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(120, 850)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer/city burning"]
+position = Vector2(-520, -208)
+sprite_frames = SubResource("SpriteFrames_xxyso")
+autoplay = "default"
+frame_progress = 0.750731
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer/city burning"]
+position = Vector2(1552, -208)
+sprite_frames = SubResource("SpriteFrames_xxyso")
+autoplay = "default"
+frame_progress = 0.750731
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer/city burning"]
+position = Vector2(520, -208)
+sprite_frames = SubResource("SpriteFrames_xxyso")
+autoplay = "default"
+frame_progress = 0.750731
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="blackground" type="Node2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(72, 848)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2/blackground"]
+z_index = -1
+position = Vector2(1536, -384)
+texture = ExtResource("8_n1wi3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2/blackground"]
+z_index = -1
+position = Vector2(-512, -384)
+texture = ExtResource("8_n1wi3")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2/blackground"]
+z_index = -1
+position = Vector2(512, -384)
+texture = ExtResource("8_n1wi3")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer3"]
+z_index = -4096
+offset_left = -944.0
+offset_top = -8.0
+offset_right = 2144.0
+offset_bottom = 840.0
+
+[node name="Box" parent="." instance=ExtResource("8_b8a0p")]
+position = Vector2(-8, 760)
+
+[node name="Box2" parent="." instance=ExtResource("9_sklym")]
+position = Vector2(152, 712)
+
+[node name="Box3" parent="." instance=ExtResource("9_sklym")]
+position = Vector2(40, 664)

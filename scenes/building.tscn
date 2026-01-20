@@ -1,29 +1,112 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2mdope6yekvg"]
+[gd_scene load_steps=10 format=3 uid="uid://c2mdope6yekvg"]
 
 [ext_resource type="Script" path="res://scripts/building.gd" id="1_dwd81"]
-[ext_resource type="Texture2D" uid="uid://b8rsm8utrepa8" path="res://sprites/icon.svg" id="1_n4ug1"]
+[ext_resource type="Texture2D" uid="uid://bkh7et2cdg4wy" path="res://sprites/building.png" id="2_8o65h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvo41"]
-size = Vector2(32, 64)
+size = Vector2(125, 280)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tc4jx"]
-size = Vector2(32, 64)
+size = Vector2(126, 281)
+
+[sub_resource type="Animation" id="Animation_olj7a"]
+resource_name = "crumble1"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_yrub0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2dlvs"]
+resource_name = "crumble2"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1snsv"]
+resource_name = "crumble3"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6us2t"]
+_data = {
+"RESET": SubResource("Animation_yrub0"),
+"crumble1": SubResource("Animation_olj7a"),
+"crumble2": SubResource("Animation_2dlvs"),
+"crumble3": SubResource("Animation_1snsv")
+}
 
 [node name="Building" type="StaticBody2D"]
 script = ExtResource("1_dwd81")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_pvo41")
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["Destructables"]]
 collision_layer = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Hurtbox"]
-position = Vector2(-5.96046e-07, 0)
-scale = Vector2(0.25, 0.5)
-texture = ExtResource("1_n4ug1")
+position = Vector2(2, -1)
+scale = Vector2(0.616667, 0.616667)
+texture = ExtResource("2_8o65h")
+hframes = 4
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_tc4jx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Hurtbox")
+libraries = {
+"": SubResource("AnimationLibrary_6us2t")
+}
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
