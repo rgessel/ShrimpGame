@@ -1,13 +1,41 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2mdope6yekvg"]
+[gd_scene load_steps=13 format=3 uid="uid://c2mdope6yekvg"]
 
 [ext_resource type="Script" path="res://scripts/building.gd" id="1_dwd81"]
 [ext_resource type="Texture2D" uid="uid://bkh7et2cdg4wy" path="res://sprites/building.png" id="2_8o65h"]
+[ext_resource type="AudioStream" uid="uid://bwhfycspr0ivy" path="res://sounds/crumble.mp3" id="3_8i3w3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvo41"]
 size = Vector2(125, 280)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tc4jx"]
 size = Vector2(126, 281)
+
+[sub_resource type="Animation" id="Animation_yrub0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -1)]
+}
 
 [sub_resource type="Animation" id="Animation_olj7a"]
 resource_name = "crumble1"
@@ -24,21 +52,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_yrub0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_2dlvs"]
@@ -75,12 +88,46 @@ tracks/0/keys = {
 "values": [4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_6uuvw"]
+resource_name = "rumble"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, -1), Vector2(5, -1), Vector2(0, -1), Vector2(-5, -1), Vector2(0, -1), Vector2(2, -1), Vector2(5, -1), Vector2(0, -1), Vector2(2, -1), Vector2(5, -1), Vector2(0, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_p40bm"]
+resource_name = "sink"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -1), Vector2(0, 300)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6us2t"]
 _data = {
 "RESET": SubResource("Animation_yrub0"),
 "crumble1": SubResource("Animation_olj7a"),
 "crumble2": SubResource("Animation_2dlvs"),
-"crumble3": SubResource("Animation_1snsv")
+"crumble3": SubResource("Animation_1snsv"),
+"rumble": SubResource("Animation_6uuvw"),
+"sink": SubResource("Animation_p40bm")
 }
 
 [node name="Building" type="StaticBody2D"]
@@ -109,4 +156,8 @@ libraries = {
 "": SubResource("AnimationLibrary_6us2t")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8i3w3")
+
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

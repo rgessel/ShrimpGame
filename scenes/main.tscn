@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cb1d115xadgl6"]
+[gd_scene load_steps=16 format=3 uid="uid://cb1d115xadgl6"]
 
 [ext_resource type="PackedScene" uid="uid://bi50dudc1175u" path="res://scenes/floor.tscn" id="1_mu60h"]
 [ext_resource type="PackedScene" uid="uid://bfcaqfrhsnmqe" path="res://scenes/player1.tscn" id="2_uequ8"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://lro7scjdhx84" path="res://scenes/blue_box.tscn" id="8_b8a0p"]
 [ext_resource type="Texture2D" uid="uid://c4we65eijfcms" path="res://sprites/skyline.png" id="8_n1wi3"]
 [ext_resource type="PackedScene" uid="uid://cecxnhpdduofc" path="res://scenes/orange_box.tscn" id="9_sklym"]
+[ext_resource type="PackedScene" uid="uid://rq7p0gff4xnf" path="res://scenes/invis_wall.tscn" id="10_c32bn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_irydr"]
 atlas = ExtResource("7_arvkc")
@@ -49,18 +50,37 @@ animations = [{
 [node name="World" type="Node2D"]
 
 [node name="Floor" parent="." instance=ExtResource("1_mu60h")]
-position = Vector2(608, 840)
+z_index = 500
+position = Vector2(590, 1083)
+
+[node name="Floor3" parent="." instance=ExtResource("1_mu60h")]
+z_index = 500
+position = Vector2(-1490, 1083)
+
+[node name="Floor2" parent="." instance=ExtResource("1_mu60h")]
+z_index = 500
+position = Vector2(2690, 1083)
 
 [node name="Player1" parent="." instance=ExtResource("2_uequ8")]
-position = Vector2(392, 480)
+position = Vector2(392, 730)
 
 [node name="Building" parent="." instance=ExtResource("4_tp7if")]
 position = Vector2(581, 669)
 
+[node name="Building2" parent="." instance=ExtResource("4_tp7if")]
+position = Vector2(-358, 669)
+
+[node name="Building4" parent="." instance=ExtResource("4_tp7if")]
+position = Vector2(-484, 668)
+
+[node name="Building3" parent="." instance=ExtResource("4_tp7if")]
+position = Vector2(1673, 669)
+
 [node name="Camera2D" parent="." instance=ExtResource("5_lpkwr")]
+position = Vector2(576, 715)
 
 [node name="Player2" parent="." instance=ExtResource("3_8y7ip")]
-position = Vector2(845, 549)
+position = Vector2(845, 733)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -76,8 +96,32 @@ sprite_frames = SubResource("SpriteFrames_xxyso")
 autoplay = "default"
 frame_progress = 0.750731
 
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer/city burning"]
+position = Vector2(-1478, -208)
+sprite_frames = SubResource("SpriteFrames_xxyso")
+autoplay = "default"
+frame_progress = 0.750731
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer/city burning"]
+position = Vector2(-2401, -208)
+sprite_frames = SubResource("SpriteFrames_xxyso")
+autoplay = "default"
+frame_progress = 0.750731
+
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer/city burning"]
 position = Vector2(1552, -208)
+sprite_frames = SubResource("SpriteFrames_xxyso")
+autoplay = "default"
+frame_progress = 0.750731
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer/city burning"]
+position = Vector2(2503, -208)
+sprite_frames = SubResource("SpriteFrames_xxyso")
+autoplay = "default"
+frame_progress = 0.750731
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer/city burning"]
+position = Vector2(3429, -208)
 sprite_frames = SubResource("SpriteFrames_xxyso")
 autoplay = "default"
 frame_progress = 0.750731
@@ -108,20 +152,89 @@ z_index = -1
 position = Vector2(512, -384)
 texture = ExtResource("8_n1wi3")
 
+[node name="blackground2" type="Node2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(3142, 848)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2/blackground2"]
+z_index = -1
+position = Vector2(1536, -384)
+texture = ExtResource("8_n1wi3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2/blackground2"]
+z_index = -1
+position = Vector2(-512, -384)
+texture = ExtResource("8_n1wi3")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2/blackground2"]
+z_index = -1
+position = Vector2(512, -384)
+texture = ExtResource("8_n1wi3")
+
+[node name="blackground3" type="Node2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(-2993, 848)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2/blackground3"]
+z_index = -1
+position = Vector2(1536, -384)
+texture = ExtResource("8_n1wi3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2/blackground3"]
+z_index = -1
+position = Vector2(-512, -384)
+texture = ExtResource("8_n1wi3")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2/blackground3"]
+z_index = -1
+position = Vector2(512, -384)
+texture = ExtResource("8_n1wi3")
+
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer3"]
 z_index = -4096
-offset_left = -944.0
-offset_top = -8.0
-offset_right = 2144.0
-offset_bottom = 840.0
+offset_left = -3001.0
+offset_top = -329.0
+offset_right = 4179.0
+offset_bottom = 939.0
 
 [node name="Box" parent="." instance=ExtResource("8_b8a0p")]
 position = Vector2(-8, 760)
+
+[node name="Box4" parent="." instance=ExtResource("8_b8a0p")]
+position = Vector2(1562, 163)
+
+[node name="Box5" parent="." instance=ExtResource("8_b8a0p")]
+position = Vector2(1389, 260)
+
+[node name="Box6" parent="." instance=ExtResource("8_b8a0p")]
+position = Vector2(1113, 372)
 
 [node name="Box2" parent="." instance=ExtResource("9_sklym")]
 position = Vector2(152, 712)
 
 [node name="Box3" parent="." instance=ExtResource("9_sklym")]
 position = Vector2(40, 664)
+
+[node name="InvisWall" parent="." instance=ExtResource("10_c32bn")]
+position = Vector2(-1430, 308)
+
+[node name="InvisWall2" parent="." instance=ExtResource("10_c32bn")]
+position = Vector2(2862, 271)
+
+[node name="Box7" parent="." instance=ExtResource("8_b8a0p")]
+position = Vector2(-760, 596)
+
+[node name="Box8" parent="." instance=ExtResource("8_b8a0p")]
+position = Vector2(-981, 716)
+
+[node name="Box9" parent="." instance=ExtResource("9_sklym")]
+position = Vector2(-1095, 549)
+
+[node name="Box10" parent="." instance=ExtResource("9_sklym")]
+position = Vector2(2280, 582)
+
+[node name="Box11" parent="." instance=ExtResource("9_sklym")]
+position = Vector2(2441, 656)
+
+[node name="Box12" parent="." instance=ExtResource("8_b8a0p")]
+position = Vector2(2273, 723)

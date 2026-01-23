@@ -6,6 +6,11 @@ const JUMP_VELOCITY = -600.0
 @onready var sprite = get_node("Sprite2D")
 @onready var anim_player = get_node("AnimationPlayer")
 @onready var hurtbox_col = get_node("Hurtbox/CollisionShape2D")
+@onready var audio_player = get_node("AudioStreamPlayer")
+@onready var audio_player2 = get_node("AudioStreamPlayer2")
+@onready var audio_player3 = get_node("AudioStreamPlayer3")
+@onready var audio_player4 = get_node("AudioStreamPlayer4")
+
 @onready var healthbar = $CanvasLayer/Healthbar
 
 var health = 100
@@ -71,6 +76,10 @@ func _handle_input() -> void:
 		anim_player.play("falling")
 	
 	if Input.is_action_just_pressed("p1_attack") and can_attack:
+		if randi_range(0, 5) == 0:
+			audio_player2.play()
+		audio_player4.play()
+		
 		is_falling = false
 		anim_player.play("attack")
 		is_attacking = true
@@ -89,16 +98,18 @@ func _handle_input() -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	area.get_parent().take_damage(sign(sprite.scale.x))
+	audio_player3.play()
 
 func take_damage(dir):
 	anim_player.play("ouch")
+	audio_player.play()
 	ouching = true
 	knockback = dir * knockback_const
 	
-	health -= randi_range(0, 20)
+	health -= 5 + randi_range(0, 5)
 	
 	if (health <= 0):
-		get_tree().change_scene_to_file("res://Scenes/main.tscn")
+		get_tree().change_scene_to_file("res://scenes/end_screen_p2.tscn")
 	
 	healthbar.health = health
 	

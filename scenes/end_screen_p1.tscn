@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://cr7mp2crjexdl"]
+
+[ext_resource type="Script" path="res://scripts/end_screen.gd" id="1_eas54"]
+[ext_resource type="Texture2D" uid="uid://bdjnmnw0d5pu4" path="res://sprites/Player1Win.png" id="2_vgtc0"]
+[ext_resource type="FontFile" uid="uid://dny15p23rgk32" path="res://sprites/RebellionSquad-ZpprZ.ttf" id="3_g5ov4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rphym"]
+texture = ExtResource("2_vgtc0")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_he1sj"]
+bg_color = Color(0.30001, 0.410476, 0.791155, 1)
+border_width_bottom = 15
+border_color = Color(0.135334, 0.376769, 0.668749, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tx5wa"]
+bg_color = Color(0.80539, 0.168516, 0.843044, 1)
+border_width_bottom = 10
+border_color = Color(0.482724, 0.168637, 0.527583, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7i0r"]
+bg_color = Color(0.877486, 0.413064, 0.670297, 1)
+
+[sub_resource type="Theme" id="Theme_asuam"]
+Button/fonts/font = ExtResource("3_g5ov4")
+Button/styles/hover = SubResource("StyleBoxFlat_he1sj")
+Button/styles/normal = SubResource("StyleBoxFlat_tx5wa")
+Button/styles/pressed = SubResource("StyleBoxFlat_o7i0r")
+
+[sub_resource type="FontVariation" id="FontVariation_37u3k"]
+base_font = ExtResource("3_g5ov4")
+
+[node name="EndScreenP1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eas54")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1112.0
+offset_bottom = 608.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rphym")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.50434
+anchor_top = 0.0540123
+anchor_right = 0.50434
+anchor_bottom = 0.0540123
+offset_left = 489.826
+offset_top = 357.072
+offset_right = 677.826
+offset_bottom = 448.072
+grow_horizontal = 2
+theme = SubResource("Theme_asuam")
+theme_override_fonts/font = SubResource("FontVariation_37u3k")
+theme_override_font_sizes/font_size = 60
+text = "Restart"
+expand_icon = true
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.527
+anchor_top = 0.584
+anchor_right = 0.527
+anchor_bottom = 0.584
+offset_left = 551.92
+offset_top = 460.64
+offset_right = 614.92
+offset_bottom = 508.64
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_asuam")
+theme_override_font_sizes/font_size = 30
+text = "Quit
+"
+expand_icon = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

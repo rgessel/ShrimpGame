@@ -1,0 +1,16 @@
+res://scenes/blue_box.tscn::dd68c1929e3cd223721980beca9ba284::1768927070::res://.godot/exported/133200997/export-ba05693f92ff89d73c9b7af8566edb6c-blue_box.scn
+res://scenes/building.tscn::cb617e19a4d112df823731fac7e05cae::1769202444::res://.godot/exported/133200997/export-69a51a5c40cf7d3dc630f05ed8c87740-building.scn
+res://scenes/camera.tscn::5782ad66a343285f4c1e21b2f60700cf::1768691364::res://.godot/exported/133200997/export-171b6540a4c3cdae5b0905e52ed5116f-camera.scn
+res://scenes/end_screen_p1.tscn::38abb3228cc045353a4d3d083b1de006::1769202444::res://.godot/exported/133200997/export-4b80f1bea42d9201a7dfbbc91c732948-end_screen_p1.scn
+res://scenes/end_screen_p2.tscn::652ffaab7f7a77645de2300ff84ed71a::1769202444::res://.godot/exported/133200997/export-4e59a046dccae7f9ef6f4ec2325a2727-end_screen_p2.scn
+res://scenes/floor.tscn::b816488afb00d1b472c2fae215aebe39::1769202444::res://.godot/exported/133200997/export-a53d0bb355a94de0c0d13ca8802e5cf9-floor.scn
+res://scenes/healthbar.tscn::fc6efe51d6fc4bbe7350f2b6156dbdb3::1768875408::res://.godot/exported/133200997/export-336d5e4384af6c45ad8386146087aa2d-healthbar.scn
+res://scenes/main.tscn::31eac502852a5182e53a1a9b0ef4fef3::1769203137::res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn
+res://scenes/music.tscn::129faae25ee48241dddbea858ad949ab::1769200361::res://.godot/exported/133200997/export-bfd8027ae1117ff610be6f2619a76089-music.scn
+res://scenes/orange_box.tscn::44abc99926403d36765547a9b20c9a2d::1768927070::res://.godot/exported/133200997/export-2951b88b543bdbeac42a5152a144fd59-orange_box.scn
+res://scenes/pause_screen.tscn::22ea81fa072920876ecd1089c032c043::1768927069::res://.godot/exported/133200997/export-c8046c7bff119ed2c0b5bc18c14b9426-pause_screen.scn
+res://scenes/player1.tscn::0951a0ed223d9144e14c8fdd3153fdb1::1769202444::res://.godot/exported/133200997/export-9bd5c4518a33e86c08d7664e6a27526f-player1.scn
+res://scenes/player2.tscn::53d2993e82030bc1987c54d82fd7e4a3::1769202444::res://.godot/exported/133200997/export-dfda35cac510ccdb670da168997b12f8-player2.scn
+res://scenes/start_screen.tscn::f9399dd8f1db2561486f27ec6b0c8d35::1769202444::res://.godot/exported/133200997/export-0667f4c7c212ccfd14534425cdebbe06-start_screen.scn
+res://ShrimpGame.tres::69ebe771404f121f80e90b4614a11a77::1768865036::res://.godot/exported/133200997/export-0a0eb65fbaee23871518611fae881e13-ShrimpGame.res
+res://scenes/invis_wall.tscn::8827a06ba6e76814eb1227507bdc29ca::1769202444::res://.godot/exported/133200997/export-8edd8cc91839e196bd67532139641769-invis_wall.scn

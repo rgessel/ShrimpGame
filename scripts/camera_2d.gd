@@ -8,11 +8,6 @@ var zoom_speed = 0.1
 var zoom_offset = 0.2
 var hcamera_offset = -200
 
-
-func _ready() -> void:
-	global_position = Vector2(0, 0)
-	
-
 func _process(_delta: float) -> void:
 	var x = clamp(1.5 - 0.002 * abs(global_position.x - p1.global_position.x), 0.75, 1.5)
 	var new_zoom = Vector2(x, x)

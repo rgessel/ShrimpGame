@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dwkqtiop731ey"]
 
-[ext_resource type="AudioStream" uid="uid://dffwjrruwttd3" path="res://sound/Shrimple Enough.wav" id="1_05ggv"]
+[ext_resource type="AudioStream" uid="uid://dffwjrruwttd3" path="res://sounds/Shrimple Enough.wav" id="1_05ggv"]
 
 [node name="Music" type="Node2D"]
 
